@@ -1,12 +1,17 @@
+import { ITask } from '../../types';
 import styles from './styles.module.css';
 
-function Task() {
+interface Props {
+  task: ITask;
+  onChangeCompleted: (uuid: string, isCompleted: boolean) => void;
+}
+
+function Task({ onChangeCompleted, task }: Props) {
   return (
-    <div className={styles.task}>
-      <input type='checkbox' />
+    <div className={`${styles.task} ${task.isCompleted ? styles.checked : ''}`}>
+      <input type='checkbox' onChange={() => onChangeCompleted(task.uuid, !task.isCompleted)}/>
       <p>
-        Integer urna interdum massa libero auctor neque turpis turpis semper.
-        Duis vel sed fames integer.
+        {task.content}
       </p>
     </div>
   );
