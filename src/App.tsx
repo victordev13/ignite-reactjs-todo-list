@@ -32,12 +32,16 @@ function App() {
     setTasks(currentTasks);
   };
 
+  const handleRemoveTask = (uuid: string) => {
+    setTasks(tasks.filter((task) => task.uuid !== uuid));
+  };
+
   return (
     <div className={styles.app}>
       <Header />
       <main className={styles.wrapper}>
         <NewTask onAddNewTask={handleAddNewTask} />
-        <TaskList tasks={tasks} onChangeCompleted={handleChangeCompleted} />
+        <TaskList tasks={tasks} onChangeCompleted={handleChangeCompleted} onRemoveTask={handleRemoveTask} />
       </main>
     </div>
   );

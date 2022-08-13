@@ -12,6 +12,7 @@ function NewTask({ onAddNewTask }: Props) {
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
     onAddNewTask(taskContent);
+    setTaskContent('');
   }
 
   function handleChangeTaskContent(event: ChangeEvent<HTMLInputElement>) {
@@ -28,7 +29,16 @@ function NewTask({ onAddNewTask }: Props) {
         required
         minLength={3}
       />
-      <button type='submit' className={styles.button}>
+      <button
+        type='submit'
+        className={styles.button}
+        disabled={taskContent.length < 3}
+        title={
+          taskContent.length < 3
+            ? 'Preencha o campo para adicionar uma nova Task'
+            : ''
+        }
+      >
         Criar <img src={plusIcon} />
       </button>
     </form>

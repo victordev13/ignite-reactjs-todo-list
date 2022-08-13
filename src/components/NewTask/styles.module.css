@@ -36,6 +36,11 @@
   min-width: 90px;
 }
 
+.button:disabled, .button:disabled:hover {
+  opacity: .7;
+  cursor: not-allowed;
+}
+
 .button img {
   margin: auto;
   margin-bottom: -2.7px;

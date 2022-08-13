@@ -8,12 +8,16 @@ import { ITask } from '../../types';
 interface Props {
   tasks: ITask[];
   onChangeCompleted: (uuid: string, isCompleted: boolean) => void;
+  onRemoveTask: (uuid: string) => void;
 }
 
-function TaskList({ tasks, onChangeCompleted }: Props) {
+function TaskList({ tasks, onChangeCompleted, onRemoveTask }: Props) {
   return (
     <div className={styles.content}>
-      <Header total={tasks.length} completed={tasks.filter(({isCompleted}) => isCompleted).length} />
+      <Header
+        total={tasks.length}
+        completed={tasks.filter(({ isCompleted }) => isCompleted).length}
+      />
       <div className={styles.listItems}>
         {tasks.length === 0 ? (
           <div className={styles.emptyList}>
@@ -26,7 +30,14 @@ function TaskList({ tasks, onChangeCompleted }: Props) {
             </div>
           </div>
         ) : (
-          tasks.map((task) => <Task task={task} onChangeCompleted={onChangeCompleted} key={task.uuid} />)
+          tasks.map((task) => (
+            <Task
+              task={task}
+              onChangeCompleted={onChangeCompleted}
+              onRemove={onRemoveTask}
+              key={task.uuid}
+            />
+          ))
         )}
       </div>
     </div>

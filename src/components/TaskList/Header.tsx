@@ -14,7 +14,9 @@ function Header({ total, completed }: Props) {
       </div>
       <div>
         <p className={styles.purple}>Concluídas</p>
-        <span className={styles.badge}>{completed}</span>
+        <span className={styles.badge}>
+          {completed === 0 ? completed : `${completed} de ${total}`}
+        </span>
       </div>
     </header>
   );

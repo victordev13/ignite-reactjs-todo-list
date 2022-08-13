@@ -7,9 +7,16 @@
   border: 1px solid var(--grey-400);
   background: var(--grey-500);
   padding: 1rem;
+
+  position: relative;
 }
 
 .checked {
   border: 1px solid var(--grey-400);
   text-decoration: line-through;
+}
+
+.removeButton {
+  right: 1rem;
+  position: absolute;
 }
