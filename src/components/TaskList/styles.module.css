@@ -1,0 +1,54 @@
+.content {
+  margin-top: 4rem;
+}
+
+.badge {
+  padding: 0.1rem 0.5rem;
+  background: var(--grey-400);
+  color: var(--grey-200);
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.blue {
+  color: var(--blue-300);
+}
+
+.purple {
+  color: var(--purple-300);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header p {
+  display: inline-block;
+  font-weight: 700;
+}
+
+.header span {
+  margin-left: 10px;
+}
+
+.listItems {
+  margin-top: 1.5rem;
+}
+
+.emptyList {
+  border-top: 1px solid var(--grey-400);
+  border-radius: 0.5rem;
+  height: 244px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  line-height: 1.5rem;
+}
+
+.emptyList > div {
+  margin-top: 1rem;
+}

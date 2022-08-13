@@ -9,20 +9,20 @@
 .newTask input[type='text'] {
   padding: 1rem;
   border-radius: 0.5rem;
-  background: var(--gray-500);
-  border: 1.5px solid var(--gray-700);
-  color: var(--gray-200);
+  background: var(--grey-500);
+  border: 1.5px solid var(--grey-700);
+  color: var(--grey-200);
 
   width: 100%;
   min-width: 150px;
 }
 
 .newTask input[type='text']::placeholder {
-  color: var(--gray-300);
+  color: var(--grey-300);
 }
 
 .newTask input[type='text']:focus {
-  background: var(--gray-400);
+  background: var(--grey-400);
 }
 
 .button {
@@ -32,7 +32,7 @@
   background: var(--blue-700);
   padding: 1rem;
   border-radius: 0.5rem;
-  color: var(--gray-100);
+  color: var(--grey-100);
   min-width: 90px;
 }
 
@@ -46,10 +46,6 @@
 }
 
 @media screen and (max-width: 768px) {
-  .newTask {
-    padding: 0 1rem;
-  }
-
   .button img {
     display: none;
   }
