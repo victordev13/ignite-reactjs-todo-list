@@ -28,6 +28,7 @@ function NewTask({ onAddNewTask }: Props) {
         onChange={handleChangeTaskContent}
         required
         minLength={3}
+        maxLength={250}
       />
       <button
         type='submit'

@@ -9,6 +9,11 @@
   padding: 1rem;
 
   position: relative;
+  line-break: anywhere;
+}
+
+.task p {
+  padding-right: 1rem;
 }
 
 .checked {
