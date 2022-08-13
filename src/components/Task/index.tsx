@@ -20,6 +20,7 @@ function Task({ onChangeCompleted, onRemove, task }: Props) {
       <input
         type='checkbox'
         onChange={() => onChangeCompleted(task.uuid, !task.isCompleted)}
+        checked={task.isCompleted}
       />
       <p>{task.content}</p>
       <a

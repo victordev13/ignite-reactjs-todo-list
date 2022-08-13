@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './App.module.css';
 import Header from './components/Header';
 import NewTask from './components/NewTask';
@@ -6,9 +6,17 @@ import TaskList from './components/TaskList';
 import { v4 as uuidv4 } from 'uuid';
 import './global.css';
 import { ITask } from './types';
+import { setItem, getItem } from './infra/storage';
 
 function App() {
-  const [tasks, setTasks] = useState<ITask[]>([]);
+  const [tasks, setTasks] = useState<ITask[]>(() => {
+    const storagedItems = getItem('tasks');
+    if (!storagedItems) {
+      return [];
+    }
+
+    return JSON.parse(storagedItems);
+  });
 
   const handleAddNewTask = (content: string) => {
     const newTask: ITask = {
@@ -36,12 +44,18 @@ function App() {
     setTasks(tasks.filter((task) => task.uuid !== uuid));
   };
 
+  useEffect(() => setItem('tasks', JSON.stringify(tasks)), [tasks]);
+
   return (
     <div className={styles.app}>
       <Header />
       <main className={styles.wrapper}>
         <NewTask onAddNewTask={handleAddNewTask} />
-        <TaskList tasks={tasks} onChangeCompleted={handleChangeCompleted} onRemoveTask={handleRemoveTask} />
+        <TaskList
+          tasks={tasks}
+          onChangeCompleted={handleChangeCompleted}
+          onRemoveTask={handleRemoveTask}
+        />
       </main>
     </div>
   );
