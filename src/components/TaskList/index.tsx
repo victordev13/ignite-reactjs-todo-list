@@ -2,6 +2,7 @@ import Header from './Header';
 import ClipboardIcon from '../../assets/clipboard.svg';
 
 import styles from './styles.module.css';
+import Task from '../Task';
 
 function TaskList() {
   return (
@@ -17,6 +18,7 @@ function TaskList() {
             <p>Crie tarefas e organize seus itens a fazer</p>
           </div>
         </div>
+        <Task />
       </div>
     </div>
   );

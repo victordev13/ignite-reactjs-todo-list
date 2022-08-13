@@ -41,3 +41,50 @@ button {
   font-weight: 400;
   font-size: 1rem;
 }
+
+/*
+  Input CheckBox
+  Reference: https://moderncss.dev/pure-css-custom-checkbox-style/
+*/
+input[type='checkbox'] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--grey-500);
+
+  font: inherit;
+  color: currentColor;
+  width: 1.15rem;
+  min-width: 1.15rem;
+  height: 1.15rem;
+  border: 0.10rem solid var(--blue-300);
+  border-radius: 1rem;
+  transform: translateY(-0.075rem);
+
+  display: grid;
+  place-content: center;
+}
+
+input[type='checkbox']::before {
+  content: '';
+  width: 0.65em;
+  height: 0.65em;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  background-color: CanvasText;
+  background: var(--grey-100);
+}
+
+input[type='checkbox']:checked {
+  background-color: var(--purple-700);
+  border: 0.10rem solid var(--purple-700);
+}
+
+input[type='checkbox']:checked::before {
+  transform: scale(1);
+}
+
+input[type='checkbox']:focus {
+  outline: transparent;
+  box-shadow: 0 0 0 1px var(--purple-300);
+}

@@ -1,0 +1,15 @@
+.task {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+
+  border-radius: 0.5rem;
+  border: 1px solid var(--grey-400);
+  background: var(--grey-500);
+  padding: 1rem;
+}
+
+.checked {
+  border: 1px solid var(--grey-400);
+  text-decoration: line-through;
+}
