@@ -1,26 +1,39 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import plusIcon from '../../assets/plus.svg';
 import styles from './styles.module.css';
+import { Time } from '../../types';
 
 interface Props {
-  onAddNewTask: (content: string) => void;
+  onAddNewTask: (content: string, time?: Time) => void;
 }
 
 function NewTask({ onAddNewTask }: Props) {
   const [taskContent, setTaskContent] = useState('');
+  const [taskTime, setTaskTime] = useState<null | string>(null);
 
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
-    onAddNewTask(taskContent);
+
+    onAddNewTask(taskContent, taskTime ? {
+      hour: taskTime.split(':')[0],
+      minutes: taskTime.split(':')[1]
+    }: undefined);
+
     setTaskContent('');
+    setTaskTime(null)
   }
 
   function handleChangeTaskContent(event: ChangeEvent<HTMLInputElement>) {
     setTaskContent(event.target.value);
   }
 
+  function handleChangeTaskTime(event: ChangeEvent<HTMLInputElement>) {
+    setTaskTime(event.target.value);
+  }
+
   return (
     <form className={styles.newTask} onSubmit={handleSubmit}>
+      <input type="time" onChange={handleChangeTaskTime} value={taskTime || ''} />
       <input
         type='text'
         placeholder='Adicione uma nova tarefa'

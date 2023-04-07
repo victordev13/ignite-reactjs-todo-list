@@ -5,7 +5,7 @@ import NewTask from './components/NewTask';
 import TaskList from './components/TaskList';
 import { v4 as uuidv4 } from 'uuid';
 import './global.css';
-import { ITask } from './types';
+import { ITask, Time } from './types';
 import { setItem, getItem } from './infra/storage';
 
 function App() {
@@ -18,10 +18,11 @@ function App() {
     return JSON.parse(storagedItems);
   });
 
-  const handleAddNewTask = (content: string) => {
+  const handleAddNewTask = (content: string, time?: Time) => {
     const newTask: ITask = {
       uuid: uuidv4(),
       content,
+      time,
       isCompleted: false,
     };
 

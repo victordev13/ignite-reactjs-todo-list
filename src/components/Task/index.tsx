@@ -22,6 +22,9 @@ function Task({ onChangeCompleted, onRemove, task }: Props) {
         onChange={() => onChangeCompleted(task.uuid, !task.isCompleted)}
         checked={task.isCompleted}
       />
+
+      {task.time && <p className="time">{`${task.time?.hour}:${task.time?.minutes}`}</p>}
+
       <p>{task.content}</p>
       <a
         href='#'

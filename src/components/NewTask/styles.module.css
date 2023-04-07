@@ -6,22 +6,42 @@
   margin-top: -26px;
 }
 
-.newTask input[type='text'] {
+.newTask input {
   padding: 1rem;
   border-radius: 0.5rem;
   background: var(--grey-500);
   border: 1.5px solid var(--grey-700);
   color: var(--grey-200);
+}
 
+.newTask input[type='text'] {
   width: 100%;
   min-width: 150px;
 }
 
-.newTask input[type='text']::placeholder {
+.newTask input[type='time'] {
+  width: 190px;
+}
+
+/* time icon */
+input[type="time"]::-webkit-calendar-picker-indicator {
+  padding: 0;
+  margin: 0;
+  opacity: .4;
+}
+
+/* AM/PM */
+input[type="time"]::-webkit-datetime-edit-ampm-field {
+  font-size: .7rem;
+  opacity: .4;
+  margin-left: 2px;
+}
+
+.newTask input::placeholder {
   color: var(--grey-300);
 }
 
-.newTask input[type='text']:focus {
+.newTask input:focus {
   background: var(--grey-400);
 }
 
