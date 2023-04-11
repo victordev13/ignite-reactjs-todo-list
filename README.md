@@ -12,7 +12,7 @@
  - [x] Remover uma tarefa da listagem
  - [x] Mostrar o progresso de conclusão das tarefas
  - [ ] Permitir reordenar itens (drag and drop)
- - [ ] Ordenar por horário
+ - [x] Ordenar por horário
 
 ***🛠 Tools***:
  - ReactJs 18.2
