@@ -6,19 +6,21 @@ import TaskList from './components/TaskList';
 import { v4 as uuidv4 } from 'uuid';
 import './global.css';
 import { ITask, Time } from './types';
-import { setItem, getItem } from './infra/storage';
+import Storage from './infra/storage';
+import { formatTime } from './utils/time';
 
 function App() {
-  const [tasks, setTasks] = useState<ITask[]>(() => {
-    const storagedItems = getItem('tasks');
-    if (!storagedItems) {
-      return [];
-    }
-
-    return JSON.parse(storagedItems);
-  });
+  const [tasks, setTasks] = useState<ITask[]>(
+    () => Storage.getItem('tasks', []),
+  );
 
   const handleAddNewTask = (content: string, time?: Time) => {
+    const now = new Date();
+    if (time && formatTime(time) < now.getHours() + ':' + now.getMinutes()) {
+      alert("Horário deve ser maior ou igual ao atual");
+      return;
+    }
+
     const newTask: ITask = {
       uuid: uuidv4(),
       content,
@@ -45,7 +47,9 @@ function App() {
     setTasks(tasks.filter((task) => task.uuid !== uuid));
   };
 
-  useEffect(() => setItem('tasks', JSON.stringify(tasks)), [tasks]);
+  useEffect(() => {
+    Storage.saveItem('tasks', tasks)
+  }, [tasks]);
 
   return (
     <div className={styles.app}>

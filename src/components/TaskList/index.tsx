@@ -4,6 +4,7 @@ import ClipboardIcon from '../../assets/clipboard.svg';
 import styles from './styles.module.css';
 import Task from '../Task';
 import { ITask } from '../../types';
+import Time from '../../utils/time';
 
 interface Props {
   tasks: ITask[];
@@ -12,6 +13,19 @@ interface Props {
 }
 
 function TaskList({ tasks, onChangeCompleted, onRemoveTask }: Props) {
+  const sortedTasks = tasks
+    .sort((a, b) => {
+      if (!a.time) {
+        return -1;
+      }
+
+      if (!b.time) {
+        return 1;
+      }
+
+      return Time.eq(a.time, b.time) ? 1 : -1;
+    })
+
   return (
     <div className={styles.content}>
       <Header
@@ -30,7 +44,7 @@ function TaskList({ tasks, onChangeCompleted, onRemoveTask }: Props) {
             </div>
           </div>
         ) : (
-          tasks.map((task) => (
+          sortedTasks.map((task) => (
             <Task
               task={task}
               onChangeCompleted={onChangeCompleted}
